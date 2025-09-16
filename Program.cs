@@ -15,6 +15,7 @@ namespace BMI_Calculator
             Console.WriteLine($"BMI (metric, named args): {bmi2:F2}");
 
             // Namngivna argument + explicit enhet
+            // Namngivna argument
             double bmi3 = CalculateBMI(unit: "imperial", weight: 180, height: 70);
             Console.WriteLine($"BMI (imperial): {bmi3:F2}");
         }
