@@ -6,15 +6,17 @@ namespace BMI_Calculator
     {
         static void Main(string[] args)
         {
-            // Fråga efter vikt
+            //Fråga efter vikt
             Console.Write("Ange din vikt i kg: ");
             string weightInput = Console.ReadLine();
             double weight;
 
-            // Validera vikt
+            //Validera vikt
             while (!double.TryParse(weightInput, out weight) || weight <= 0)
             {
                 Console.Write("Ogiltig vikt. Ange en positiv siffra: ");
+                // Kontrollerar om talet är positivt
+                //Om talet är noll eller negativt kommer loopen att fortsätta
                 weightInput = Console.ReadLine();
             }
 
@@ -31,7 +33,7 @@ namespace BMI_Calculator
                     // Kontrollera om värdet verkar vara i centimeter (> 2 meter)
                     if (height > 2 && height <= 250)
                     {
-                        height /= 100; // Konvertera till meter
+                        height /= 100; // Konverting till meter
                     }
 
                     if (height > 0)
@@ -39,17 +41,18 @@ namespace BMI_Calculator
                         break;
                     }
                 }
-                Console.Write("Ogiltig längd. Ange en positiv siffra (t.ex. 1.75 eller 175 för 1.75 meter): ");
-                heightInput = Console.ReadLine();
+             Console.Write("Ogiltig längd. Ange en positiv siffra (t.ex. 1.75 eller 175 för 1.75 meter): ");
+             heightInput = Console.ReadLine();
+
             }
 
-            // Kan testas olika sätt att anropa metoden
+            // Testa olika sätt att anropa metoden
             Console.WriteLine("\nTest av olika anrop:");
 
             double bmiMetric = CalculateBMI(weight: weight, height: height);
             Console.WriteLine($"BMI (metric): {bmiMetric:F2}");
 
-            double bmiNamed = CalculateBMI(height: height, weight: weight, unit: "metric");
+            double bmiNamed = CalculateBMI(height: height, weight: weight);
             Console.WriteLine($"BMI (namngivna argument): {bmiNamed:F2}");
 
             double bmiDefaultUnit = CalculateBMI(weight: weight, height: height);
